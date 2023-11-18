@@ -1,20 +1,28 @@
-import logo from '../../assets/logos/Group 1329.png';
-import logo2 from '../../assets/logos/google.svg'
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import logo from '../../assets/logos/Group 1329.png'
+
 const Login = () => {
     return (
-        <div className="hero mx-auto min-h-screen py-10 w-full bg-base-200">
+        <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex flex-col">
                 <div className="text-center">
-                    <h1 className="text-5xl font-bold"><img src={logo} className='w-[202px] h-[60px]' alt="" /></h1>
+                    <h1 className="text-5xl font-bold"><img className='w-[202px] h-[60px]' src={logo} alt="" /></h1>
                 </div>
-                <div className="card flex items-center justify-center w-[570px] h-[457px] bg-base-100 border-[#C5C5C5] border-[1px] rounded-none">
-                    {/* <form className="card-body"> */}
-                    <div className='w-92 text-center'>
-                        <h2 className='text-2xl font-bold py-4 text-center'>Login With</h2>
-                        <div className='flex items-center hover:scale-105'><img src={logo2} className='btn p-1 bg-[#C5C5C5] border-[#C5C5C5] rounded-e-none rounded-l-3xl border-e-0'></img><button className='text-center btn bg-[#C5C5C5] border-[#C5C5C5] rounded-e-3xl border-l-0 rounded-l-none w-full hover:bg-[#C5C5C5]'>Continue with google</button></div>
-                        <p className='ml-12 pt-2'>Don't have an account? <Link to='/singUp' className='underline text-green-500'>Create an account</Link></p>
-                    </div>
+                <div className="card w-[570px] h-[591px] shrink-0 max-w-sm shadow-2xl bg-base-100">
+                    <form className="card-body">
+                        <h2 className='text-2xl font-bold py-4'>Login</h2>
+                        <div className="form-control">
+                            <input type="email" name="email" placeholder="Email" className='mb-2 border-t-0 border-e-0 border-l-0 border-b-[1px] border-[#C5C5C5] p-1' />
+                        </div>
+                        <div className="form-control">
+                            <input type="password" name="password" placeholder="Enter Password" className='mb-2 border-t-0 border-e-0 border-l-0 border-b-[1px] border-[#C5C5C5] p-1' />
+                        </div>
+                        <div className="form-control mt-6 text-center">
+                            <button className="btn btn-primary rounded-none">Login</button>
+                            <p className="py-2 text-primary underline hover:scale-105"><Link to='/googleLogin'>Login with Google</Link></p>
+                        </div >
+                        <div className="text-center">Don't have an account? <Link to='/singUp'><span className='underline hover:text-green-500 text-green-400'>Register Now</span></Link></div>
+                    </form>
                 </div>
             </div>
         </div>

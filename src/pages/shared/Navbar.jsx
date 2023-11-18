@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logos/Group 1329.png'
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { FaCartPlus } from "react-icons/fa6";
+import { AuthContext } from '../../provider/AuthProvider';
 
 const Navbar = () => {
-    const [totalCart, setTotalCart] = useState()
+    const [totalCart, setTotalCart] = useState();
+    const { user } = useContext(AuthContext);
+    console.log(user);
 
     fetch('http://localhost:3000/totalGallery2')
         .then(res => res.json())
@@ -18,7 +22,7 @@ const Navbar = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/cart'>Cart<sup>{totalCart}</sup></Link></li>
+                        <li><Link to='/cart'><FaCartPlus></FaCartPlus><sup>{totalCart}</sup></Link></li>
                         <li><Link to='/event'>Event</Link></li>
                         <li><Link to='/blog'>Blog</Link></li>
                     </ul>
@@ -29,12 +33,15 @@ const Navbar = () => {
                 <div className="navbar-end hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/cart'>Cart<sup className='text-red-500 font-bold text-[14px]'>{totalCart}</sup></Link></li>
+                        <li><Link to='/cart'><FaCartPlus className='text-2xl text-info'></FaCartPlus><sup className='text-red-500 font-bold text-[14px]'>{totalCart}</sup></Link></li>
                         <li><Link to='/event'>Event</Link></li>
                         <li><Link to='/blog'>Blog</Link></li>
                     </ul>
                 </div>
-                <Link to='/login'><button className="btn btn-info me-3 w-[100px]">Login</button></Link>
+                {user ?
+                    <span>{user.displayName}<Link to='/login'><button className="btn btn-info me-3 w-[100px]">Logout</button></Link></span> :
+                    <Link to='/login'><button className="btn btn-info me-3 w-[100px]">Login</button></Link>
+                }
                 <Link><button className="btn btn-neutral w-[100px]">Admin</button></Link>
             </div>
         </div>

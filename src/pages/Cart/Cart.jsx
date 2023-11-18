@@ -6,6 +6,7 @@ const Cart = () => {
     const [items, setItems] = useState(cartData)
 
     const handleRemoveCart = (id) => {
+
         fetch(`http://localhost:3000/cart/${id}`, {
             method: 'DELETE'
         })
@@ -25,7 +26,7 @@ const Cart = () => {
                     <div key={item._id} className='bg-slate-100 px-6 py-2 mb-2 flex w-full items-center justify-between container mx-auto'>
                         <img className='w-16' src={item.img} alt="" />
                         <h2>{item.title}</h2>
-                        <button onClick={() => handleRemoveCart(item._id)} className='btn btn-success'>Delete</button>
+                        <button onClick={() => handleRemoveCart(item._id)} className='btn btn-error'>Delete</button>
                     </div>
                 )
                 : <span className="loading loading-bars loading-lg"></span>

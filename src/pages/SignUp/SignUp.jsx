@@ -12,19 +12,22 @@ const SignUp = () => {
                     <form className="card-body">
                         <h2 className='text-2xl font-bold py-4'>Register as a volunteer</h2>
                         <div className="form-control">
-                            <input type="text" name="name" id="" placeholder="Full Name" className='mb-2 border-t-0 border-e-0 border-l-0 border-b-[1px] border-[#C5C5C5] p-1' />
+                            <input type="text" name="name" placeholder="Full Name" className='mb-2 border-t-0 border-e-0 border-l-0 border-b-[1px] border-[#C5C5C5] p-1' />
                         </div>
                         <div className="form-control">
-                            <input type="email" name="email" id="" placeholder="Email" className='mb-2 border-t-0 border-e-0 border-l-0 border-b-[1px] border-[#C5C5C5] p-1' />
+                            <input type="email" name="email" placeholder="Email" className='mb-2 border-t-0 border-e-0 border-l-0 border-b-[1px] border-[#C5C5C5] p-1' />
                         </div>
                         <div className="form-control">
-                            <input type="email" name="date" id="" placeholder="Date" className='mb-2 border-t-0 border-e-0 border-l-0 border-b-[1px] border-[#C5C5C5] p-1' />
+                            <input type="password" name="password" placeholder="Password" className='mb-2 border-t-0 border-e-0 border-l-0 border-b-[1px] border-[#C5C5C5] p-1' />
                         </div>
                         <div className="form-control">
-                            <input type="text" name="description" id="" placeholder="Description" className='mb-2 border-t-0 border-e-0 border-l-0 border-b-[1px] border-[#C5C5C5] p-1' />
+                            <input type="date" name="date" placeholder="Date" className='mb-2 border-t-0 border-e-0 border-l-0 border-b-[1px] border-[#C5C5C5] p-1' />
                         </div>
                         <div className="form-control">
-                            <input type="text" name="organize" id="" placeholder="Organize books at the library" className='mb-2 border-t-0 border-e-0 border-l-0 border-b-[1px] border-[#C5C5C5] p-1' />
+                            <input type="text" name="description" placeholder="Description" className='mb-2 border-t-0 border-e-0 border-l-0 border-b-[1px] border-[#C5C5C5] p-1' />
+                        </div>
+                        <div className="form-control">
+                            <input type="text" name="organize" placeholder="Organize books at the library" className='mb-2 border-t-0 border-e-0 border-l-0 border-b-[1px] border-[#C5C5C5] p-1' />
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary rounded-none">Register</button>
