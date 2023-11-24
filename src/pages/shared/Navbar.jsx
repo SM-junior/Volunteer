@@ -3,15 +3,23 @@ import logo from '../../assets/logos/Group 1329.png'
 import { useState, useContext } from 'react';
 import { FaCartPlus } from "react-icons/fa6";
 import { AuthContext } from '../../provider/AuthProvider';
+import { useEffect } from 'react';
 
 const Navbar = () => {
-    const [totalCart, setTotalCart] = useState();
-    const { user } = useContext(AuthContext);
-    console.log(user);
+    const [totalCart, setTotalCart] = useState(0);
+    const { user,logOut } = useContext(AuthContext);
 
-    fetch('http://localhost:3000/totalGallery2')
-        .then(res => res.json())
-        .then(data => setTotalCart(data.totalGallery))
+    useEffect(() => {
+        fetch('http://localhost:3000/totalGallery2')
+            .then(res => res.json())
+            .then(data => setTotalCart(data.totalGallery))
+    }, [totalCart])
+
+    const handleLogOut=()=>{
+        logOut()
+        .then(()=>{})
+        .then(error=>console.log(error))
+    }
 
     return (
         <div className="navbar bg-base-100">
@@ -39,7 +47,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 {user ?
-                    <span>{user.displayName}<Link to='/login'><button className="btn btn-info me-3 w-[100px]">Logout</button></Link></span> :
+                    <span onClick={handleLogOut}>{user.displayName}<Link><button className="btn btn-info me-3 w-[100px]">Logout</button></Link></span> :
                     <Link to='/login'><button className="btn btn-info me-3 w-[100px]">Login</button></Link>
                 }
                 <Link><button className="btn btn-neutral w-[100px]">Admin</button></Link>

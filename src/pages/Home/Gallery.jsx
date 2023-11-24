@@ -19,32 +19,32 @@ const Gallery = () => {
             .then(data => setItems(data))
     }, [currentPage, itemsPerPage])
 
-    const handleClick = (id) => {
-        const cardData = items.find(item => id == item._id)
-        const cart = {
-            title: cardData.title,
-            img: cardData.img
-        }
+    // const handleClick = (id) => {
+    //     const cardData = items.find(item => id == item._id)
+    //     const cart = {
+    //         title: cardData.title,
+    //         img: cardData.img
+    //     }
 
-        fetch(`http://localhost:3000/cart`, {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(cart)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
-                    Swal.fire({
-                        title: 'WOW!',
-                        text: 'Item added cart successfully',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
-                    })
-                }
-            })
-    }
+    //     fetch(`http://localhost:3000/cart`, {
+    //         method: "POST",
+    //         headers: {
+    //             "content-type": "application/json"
+    //         },
+    //         body: JSON.stringify(cart)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data.insertedId) {
+    //                 Swal.fire({
+    //                     title: 'WOW!',
+    //                     text: 'Item added cart successfully',
+    //                     icon: 'success',
+    //                     confirmButtonText: 'Cool'
+    //                 })
+    //             }
+    //         })
+    // }
 
     const options = [12, 24, 36, 48, 60, 76];
     const handleSelectChange = (e) => {
@@ -61,7 +61,7 @@ const Gallery = () => {
                             key={item._id}
                             item={item}
                             setItems={setItems}
-                            handleClick={handleClick}
+                            // handleClick={handleClick}
                         ></GalleryContent>
                     ) :
                     <span className="loading loading-bars loading-lg"></span>

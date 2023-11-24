@@ -1,15 +1,19 @@
 import logo from '../../assets/logos/Group 1329.png';
 import logo2 from '../../assets/logos/google.svg'
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 const GoogleLogin = () => {
-    const { loginWithGoogle } = useContext(AuthContext)
+    const { loginWithGoogle } = useContext(AuthContext);
+    const navigate=useNavigate();
 
     const handleLogin = () => {
         loginWithGoogle()
             .then(result => {
                 console.log(result.user.displayName);
+                if(result.user){
+                    navigate('/')
+                }
             })
             .catch(error => {
                 console.log(error.message);
