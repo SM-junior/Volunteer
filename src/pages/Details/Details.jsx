@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useCart from '../../hooks/useCart';
 
 
 const Details = () => {
@@ -9,6 +10,7 @@ const Details = () => {
     const [details, setDetails] = useState()
     const [loading, setLoading] = useState(true)
     const { id } = useParams();
+    const [,refetch]=useCart()
 
     useEffect(() => {
         setLoading(true)
@@ -43,6 +45,7 @@ const Details = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
+                    refetch()
                     Swal.fire({
                         title: 'WOW!',
                         text: 'Item added cart successfully',
@@ -51,10 +54,8 @@ const Details = () => {
                     })
                 }
             })
-        setLoading(false)
+        // setLoading(false)
     }
-
-
 
     return (
         <div>
@@ -64,10 +65,6 @@ const Details = () => {
                     <figure><img className='w-72' src={items && items.img} alt="Movie" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">{items && items.title}</h2>
-                        <p>Click the button to watch on Jetflix app.</p>
-                        <p>Click the button to watch on Jetflix app.</p>
-                        <p>Click the button to watch on Jetflix app.</p>
-                        <p>Click the button to watch on Jetflix app.</p>
                         <p>Click the button to watch on Jetflix app.</p>
                         <div className="card-actions justify-end">
                             <Link onClick={() => handleClick()}><button className="btn btn-info">Buy now</button></Link>

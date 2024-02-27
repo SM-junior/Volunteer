@@ -5,8 +5,6 @@ import { AuthContext } from '../../provider/AuthProvider';
 import Swal from 'sweetalert2'
 
 const SignUp = () => {
-    // const [success, setSuccess]=useState('');
-    // const [error,setError]=useState('')
     const { createUser } = useContext(AuthContext);
     const navigate=useNavigate()
 
@@ -37,7 +35,6 @@ const SignUp = () => {
             text: error.message,
           }))
     }
-
 
     return (
         <div className="hero min-h-screen bg-base-200">

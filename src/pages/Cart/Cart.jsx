@@ -1,9 +1,13 @@
 import { useLoaderData } from 'react-router-dom';
 import { useState } from 'react';
+import useCart from '../../hooks/useCart';
+import Swal from 'sweetalert2';
 
 const Cart = () => {
     const cartData = useLoaderData();
     const [items, setItems] = useState(cartData)
+    const [cart, refetch] = useCart();
+
 
     const handleRemoveCart = (id) => {
 
@@ -13,7 +17,13 @@ const Cart = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount > 0) {
-                    alert('User deleted successfully')
+                    refetch();
+                    Swal.fire({
+                        title: 'DELETE!',
+                        text: 'Item item deleted successful',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
                     const remainingUsers = items.filter(user => user._id !== id)
                     setItems(remainingUsers)
                 }
